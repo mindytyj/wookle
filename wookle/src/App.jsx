@@ -1,25 +1,29 @@
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import Characters from "./components/Characters";
+import Films from "./components/Films";
+import Home from "./components/Home";
+import Planets from "./components/Planets";
+import Species from "./components/Species";
+import Starships from "./components/Starships";
+import Vehicles from "./components/Vehicles";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    async function displayAPI() {
-      const response = await fetch("https://swapi.dev/api/people");
-      const jsonData = await response.json();
-      setCharacters(jsonData.results);
-    }
-    displayAPI();
-  }, []);
-
   return (
-    <ul>
-      {characters.map((character, index) => (
-        <li key={index}>{character.name}</li>
-      ))}
-    </ul>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/people" element={<Characters />} />
+        <Route path="/films" element={<Films />} />
+        <Route path="/planets" element={<Planets />} />
+        <Route path="/species" element={<Species />} />
+        <Route path="/starships" element={<Starships />} />
+        <Route path="/vehicles" element={<Vehicles />} />
+      </Routes>
+    </>
   );
 }
 
