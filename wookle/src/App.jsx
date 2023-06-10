@@ -1,20 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import Characters from "./components/Characters";
-import Films from "./components/Films";
-import Home from "./components/Home";
-import Planets from "./components/Planets";
-import Species from "./components/Species";
-import Starships from "./components/Starships";
-import Vehicles from "./components/Vehicles";
-import NavBar from "./components/NavBar";
-import CharacterDetails from "./components/CharacterDetails";
-import FilmDetails from "./components/FilmDetails";
-import PlanetDetails from "./components/PlanetDetails";
-import SpeciesDetails from "./components/SpeciesDetails";
-import StarshipDetails from "./components/StarshipDetails";
-import VehicleDetails from "./components/VehicleDetails";
+import Bootstrap from "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import CSS from "./App.css";
+import Characters from "./components/characters/Characters";
+import Films from "./components/films/Films";
+import Home from "./components/home/Home";
+import Planets from "./components/planets/Planets";
+import Species from "./components/species/Species";
+import Starships from "./components/starships/Starships";
+import Vehicles from "./components/vehicles/Vehicles";
+import NavBar from "./components/navbar/NavBar";
+import CharacterDetails from "./components/characters/CharacterDetails";
+import FilmDetails from "./components/films/FilmDetails";
+import PlanetDetails from "./components/planets/PlanetDetails";
+import SpeciesDetails from "./components/species/SpeciesDetails";
+import StarshipDetails from "./components/starships/StarshipDetails";
+import VehicleDetails from "./components/vehicles/VehicleDetails";
 
 function App() {
   return (
