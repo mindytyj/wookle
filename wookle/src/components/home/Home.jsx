@@ -1,15 +1,20 @@
+import { useState } from "react";
 import SearchButton from "./SearchButton";
 import SearchSelection from "./SearchSelection";
 
 export default function Home() {
+  const [selection, setSelection] = useState("");
+
+  const searchSelection = (select) => setSelection(select);
+
   return (
     <div className="container">
       <h1 className="mainHeader">Wookle</h1>
       <h2 className="subHeader">Oh Wookiee! All Things Star Wars!</h2>
       <br />
-      <SearchSelection />
+      <SearchSelection searchSelection={searchSelection} />
       <br />
-      <SearchButton />
+      <SearchButton selection={selection} />
     </div>
   );
 }

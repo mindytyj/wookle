@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-export default function SearchButton() {
-  function handleClick() {
-    const navigate = useNavigate();
+export default function SearchButton({ selection }) {
+  const navigate = useNavigate();
 
+  function handleClick() {
     navigate(`/${selection}`);
   }
 

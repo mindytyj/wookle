@@ -1,14 +1,18 @@
-import { useState } from "react";
-
-export default function SearchSelection() {
-  const [selection, setSelection] = useState("");
-
+export default function SearchSelection({ searchSelection }) {
   function handleChange(event) {
-    setSelection(event.target.value);
+    if (event.target.value === "default") {
+      return;
+    }
+    searchSelection(event.target.value);
   }
 
   return (
-    <select onChange={handleChange}>
+    <select
+      className="form-select form-select-lg mb-3"
+      aria-label="Wookle Search Menu"
+      onChange={handleChange}
+    >
+      <option value="default">What are you wooking for?</option>
       <option value="people">Characters</option>
       <option value="films">Films</option>
       <option value="planets">Planets</option>
