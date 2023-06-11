@@ -3,9 +3,16 @@ import NavBarItems from "./NavBarItems";
 
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "lawngreen" }}
+    >
       <div className="container-fluid">
-        <NavLink to={"/"} className="navbar-brand">
+        <NavLink
+          to={"/"}
+          className="navbar-brand"
+          style={{ color: "#ffe81f", fontSize: "24px" }}
+        >
           Wookle
         </NavLink>
         <button
