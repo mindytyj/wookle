@@ -13,13 +13,32 @@ export default function Vehicles() {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <h1>Star Wars Vehicles</h1>
-      <ul>
-        {vehicles.map((vehicle, index) => (
-          <li key={index}>{vehicle.name}</li>
+      <br />
+      <div className="row row-cols-1 grid gap-2 justify-content-center">
+        {vehicles.map((vehicle) => (
+          <div
+            className="card card border-warning mb-2"
+            style={{ width: "16rem" }}
+          >
+            <h5 className="card-title">{vehicle.name}</h5>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">Model: {vehicle.model}</li>
+              <li className="list-group-item">
+                Vehicle Class: {vehicle.vehicle_class}
+              </li>
+              <li className="list-group-item">
+                Max Atmosphering Speed: {vehicle.max_atmosphering_speed}
+              </li>
+              <li className="list-group-item">
+                Cargo Capacity: {vehicle.cargo_capacity}
+              </li>
+              <li className="list-group-item">Length: {vehicle.length}</li>
+            </ul>
+          </div>
         ))}
-      </ul>
-    </>
+      </div>
+    </div>
   );
 }
