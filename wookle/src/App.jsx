@@ -33,9 +33,7 @@ function App() {
         <Route path="/species" element={<Species />} />
         <Route path="/species/:id" element={<SpeciesDetails />} />
         <Route path="/starships" element={<Starships />} />
-        <Route path="/starships/:id" element={<StarshipDetails />} />
         <Route path="/vehicles" element={<Vehicles />} />
-        <Route path="/vehicles/:id" element={<VehicleDetails />} />
         <Route path="/*" element={<h1>Error 404: No page found</h1>} />
       </Routes>
     </>
