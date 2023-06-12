@@ -15,8 +15,6 @@ import CharacterDetails from "./components/characters/CharacterDetails";
 import FilmDetails from "./components/films/FilmDetails";
 import PlanetDetails from "./components/planets/PlanetDetails";
 import SpeciesDetails from "./components/species/SpeciesDetails";
-import StarshipDetails from "./components/starships/StarshipDetails";
-import VehicleDetails from "./components/vehicles/VehicleDetails";
 
 function App() {
   return (
