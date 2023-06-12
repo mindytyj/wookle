@@ -18,6 +18,7 @@ export default function Characters() {
   return (
     <div className="container">
       <h1>Star Wars Characters</h1>
+      <br />
       <div className="row row-cols-1 g-5 grid gap-3 justify-content-center">
         {characters.map((character, index) => (
           <div
