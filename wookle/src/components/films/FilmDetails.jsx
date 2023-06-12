@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function FilmDetails() {
   const [film, setFilm] = useState({});
@@ -18,12 +18,28 @@ export default function FilmDetails() {
     <div className="container">
       <h1>{film.title}</h1>
       <br />
-      <h2>Episode: {film.episode_id}</h2>
-      <br />
-      <p>{film.opening_crawl}</p>
-      <p>Release Date: {film.release_date}</p>
-      <p>Directed by {film.director}</p>
-      <p>Produced by {film.producer}</p>
+      <div className="d-flex justify-content-center">
+        <div
+          className="card border-warning mb-2 card"
+          style={{ width: "30rem" }}
+        >
+          <div className="card-body">
+            <h2 className="card-title">Episode: {film.episode_id}</h2>
+            <br />
+            <p className="card-text">{film.opening_crawl}</p>
+            <br />
+            <p className="card-text">Release Date: {film.release_date}</p>
+            <p className="card-text">Directed by {film.director}</p>
+            <p className="card-text">Produced by {film.producer}</p>
+            <br />
+            <Link to={"/films"}>
+              <button className="btn btn-warning">
+                Back to Films Main Page
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -16,19 +16,24 @@ export default function Planets() {
   return (
     <div className="container">
       <h1>Star Wars Planets</h1>
-      <ul
-        className="list-group card border-warning mb-2 text-bg-secondary p-3"
-        style={{ maxWidth: "30rem" }}
-      >
-        {planets.map((planet, index) => (
-          <li className="list-group-item" key={index + 1}>
-            {planet.name}
-            <Link to={`/planets/${index + 1}`}>
-              <button className="btn btn-warning btn-sm">Details</button>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="d-flex justify-content-center">
+        <ul
+          className="list-group card border-warning mb-2 text-bg-secondary p-3"
+          style={{ width: "30rem" }}
+        >
+          {planets.map((planet, index) => (
+            <li className="list-group-item" key={index + 1}>
+              {planet.name}
+              <Link
+                to={`/planets/${index + 1}`}
+                className="position-absolute end-0"
+              >
+                <button className="btn btn-warning btn-sm">Details</button>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

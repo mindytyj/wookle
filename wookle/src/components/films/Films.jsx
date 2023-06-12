@@ -31,7 +31,7 @@ export default function Films() {
       <br />
       <div className="row row-cols-2 row-cols-md-3 g-2">
         {films.map((film, index) => (
-          <div className="col">
+          <div className="col" key={film.title}>
             <div className="card h-100" style={{ maxWidth: "18rem" }}>
               <img
                 src={`${poster[0].image}`}
