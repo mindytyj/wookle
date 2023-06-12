@@ -1,23 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CharacterPagination() {
-  const [page, setPage] = useState("");
-
-  function handleChange(event) {
-    setPage(event.target.value);
-  }
-
-  console.log(page);
-
   return (
     <nav aria-label="Characters Page Navigation">
-      <ul onChange={handleChange} className="pagination">
-        <li value="previous" className="page-item">
-          <Link to={`/people/?page=${page}`} className="page-link">
-            Previous
-          </Link>
-        </li>
+      <ul className="pagination justify-content-center">
+        <li className="page-item page-link">Page</li>
         <li value="1" className="page-item">
           <Link to={"/people/?page=1"} className="page-link">
             1
@@ -61,11 +48,6 @@ export default function CharacterPagination() {
         <li value="9" className="page-item">
           <Link to={"/people/?page=9"} className="page-link">
             9
-          </Link>
-        </li>
-        <li value="next" className="page-item">
-          <Link to={``} className="page-link">
-            Next
           </Link>
         </li>
       </ul>

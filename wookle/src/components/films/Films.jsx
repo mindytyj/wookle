@@ -25,16 +25,14 @@ export default function Films() {
     getMoviePoster();
   }, []);
 
-  console.log(poster);
-
   return (
-    <>
+    <div className="container">
       <h1>Star Wars Films</h1>
       <br />
-      <div className="row row-cols-1 row-cols-md-2 g-4">
+      <div className="row row-cols-2 row-cols-md-3 g-2">
         {films.map((film, index) => (
           <div className="col">
-            <div className="card h-100">
+            <div className="card h-100" style={{ maxWidth: "18rem" }}>
               <img
                 src={`${poster[0].image}`}
                 className="card-img-top"
@@ -51,6 +49,6 @@ export default function Films() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

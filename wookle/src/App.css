@@ -1,6 +1,7 @@
 body {
   background-image: url("/public/images/gameBG.png");
   color: #ffe81f;
+  background-repeat: inherit;
 }
 
 .container {
