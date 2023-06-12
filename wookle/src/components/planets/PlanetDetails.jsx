@@ -17,6 +17,7 @@ export default function PlanetDetails() {
   return (
     <div className="container">
       <h1>{planet.name}</h1>
+      <br />
       <div className="d-flex justify-content-center">
         <ul
           className="list-group card border-warning mb-2 text-bg-secondary p-3"
