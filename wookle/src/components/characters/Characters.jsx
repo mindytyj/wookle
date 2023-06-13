@@ -1,19 +1,26 @@
 import { useState, useEffect } from "react";
 import CharacterPagination from "./CharacterPagination";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Characters() {
   const [characters, setCharacters] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  let page = parseInt(searchParams.get("page"));
 
   useEffect(() => {
     async function displayCharacters() {
-      const response = await fetch(`https://swapi.dev/api/people/?page=1`);
+      const response = await fetch(
+        page
+          ? `https://swapi.dev/api/people/?page=${page}`
+          : `https://swapi.dev/api/people`
+      );
       const jsonData = await response.json();
       setCharacters(jsonData.results);
     }
     displayCharacters();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="container">
@@ -35,7 +42,7 @@ export default function Characters() {
           </div>
         ))}
       </div>
-      <CharacterPagination />
+      <CharacterPagination setSearchParams={setSearchParams} />
     </div>
   );
 }
