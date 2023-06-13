@@ -1,10 +1,10 @@
-export default function CharacterPagination({ setSearchParams }) {
+export default function PlanetsPagination({ setSearchParams }) {
   function handleClick(event) {
     setSearchParams({ page: event.target.value });
   }
 
   return (
-    <nav aria-label="Characters Page Navigation">
+    <nav aria-label="Planets Page Navigation">
       <ul className="pagination justify-content-center">
         <button className="page-item page-link" disabled>
           Page
@@ -26,15 +26,6 @@ export default function CharacterPagination({ setSearchParams }) {
         </button>
         <button value="6" className="page-item page-link" onClick={handleClick}>
           6
-        </button>
-        <button value="7" className="page-item page-link" onClick={handleClick}>
-          7
-        </button>
-        <button value="8" className="page-item page-link" onClick={handleClick}>
-          8
-        </button>
-        <button value="9" className="page-item page-link" onClick={handleClick}>
-          9
         </button>
       </ul>
     </nav>

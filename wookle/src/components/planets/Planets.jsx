@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import PlanetsPagination from "./PlanetsPagination";
 
 export default function Planets() {
   const [planets, setPlanets] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  let page = parseInt(searchParams.get("page"));
 
   useEffect(() => {
     async function displayPlanets() {
-      const response = await fetch("https://swapi.dev/api/planets");
+      const response = await fetch(
+        page
+          ? `https://swapi.dev/api/planets/?page=${page}`
+          : `https://swapi.dev/api/planets`
+      );
       const jsonData = await response.json();
       setPlanets(jsonData.results);
     }
     displayPlanets();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="container">
@@ -35,6 +43,7 @@ export default function Planets() {
           ))}
         </ul>
       </div>
+      <PlanetsPagination setSearchParams={setSearchParams} />
     </div>
   );
 }
