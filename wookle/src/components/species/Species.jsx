@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import SpeciesPagination from "./SpeciesPagination";
 
 export default function Species() {
   const [species, setSpecies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  let page = parseInt(searchParams.get("page"));
 
   useEffect(() => {
     async function displaySpecies() {
-      const response = await fetch("https://swapi.dev/api/species");
+      const response = await fetch(
+        page
+          ? `https://swapi.dev/api/species/?page=${page}`
+          : `https://swapi.dev/api/species`
+      );
       const jsonData = await response.json();
       setSpecies(jsonData.results);
     }
     displaySpecies();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="container">
@@ -35,6 +43,7 @@ export default function Species() {
           ))}
         </ul>
       </div>
+      <SpeciesPagination setSearchParams={setSearchParams} />
     </div>
   );
 }

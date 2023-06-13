@@ -1,16 +1,25 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import VehiclesPagination from "./VehiclesPagination";
 
 export default function Vehicles() {
   const [vehicles, setVehicles] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  let page = parseInt(searchParams.get("page"));
 
   useEffect(() => {
     async function displayVehicles() {
-      const response = await fetch("https://swapi.dev/api/vehicles");
+      const response = await fetch(
+        page
+          ? `https://swapi.dev/api/vehicles/?page=${page}`
+          : `https://swapi.dev/api/vehicles`
+      );
       const jsonData = await response.json();
       setVehicles(jsonData.results);
     }
     displayVehicles();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="container">
@@ -39,6 +48,7 @@ export default function Vehicles() {
           </div>
         ))}
       </div>
+      <VehiclesPagination setSearchParams={setSearchParams} />
     </div>
   );
 }

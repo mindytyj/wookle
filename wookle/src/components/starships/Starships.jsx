@@ -1,16 +1,25 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import StarshipsPagination from "./StarshipsPagination";
 
 export default function Starships() {
   const [starships, setStarships] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  let page = parseInt(searchParams.get("page"));
 
   useEffect(() => {
     async function displayStarships() {
-      const response = await fetch("https://swapi.dev/api/starships/?page=1");
+      const response = await fetch(
+        page
+          ? `https://swapi.dev/api/starships/?page=${page}`
+          : `https://swapi.dev/api/starships`
+      );
       const jsonData = await response.json();
       setStarships(jsonData.results);
     }
     displayStarships();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="container">
@@ -39,6 +48,7 @@ export default function Starships() {
           </div>
         ))}
       </div>
+      <StarshipsPagination setSearchParams={setSearchParams} />
     </div>
   );
 }
