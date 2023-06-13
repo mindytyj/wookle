@@ -22,11 +22,11 @@ export default function Species() {
           className="list-group card border-warning mb-2 text-bg-secondary p-3"
           style={{ width: "30rem" }}
         >
-          {species.map((speciesType, index) => (
-            <li className="list-group-item" key={index + 1}>
+          {species.map((speciesType) => (
+            <li className="list-group-item" key={speciesType.name}>
               {speciesType.name}
               <Link
-                to={`/species/${index + 1}`}
+                to={`/species/${speciesType.url.split("/")[5]}`}
                 className="position-absolute end-0"
               >
                 <button className="btn btn-warning btn-sm">Details</button>

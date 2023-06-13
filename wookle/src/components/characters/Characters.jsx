@@ -20,12 +20,12 @@ export default function Characters() {
       <h1>Star Wars Characters</h1>
       <br />
       <div className="row row-cols-1 g-5 grid gap-3 justify-content-center">
-        {characters.map((character, index) => (
+        {characters.map((character) => (
           <div
             className="card border-warning mb-2 card text-bg-secondary mb-2 col"
             style={{ maxWidth: "18rem" }}
-            key={index + 1}
-            onClick={() => navigate(`/people/${index + 1}`)}
+            key={character.name}
+            onClick={() => navigate(`/people/${character.url.split("/")[5]}`)}
           >
             <div className="card-body">
               <h5 className="card-title">{character.name}</h5>

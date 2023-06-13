@@ -22,11 +22,11 @@ export default function Planets() {
           className="list-group card border-warning mb-2 text-bg-secondary p-3"
           style={{ width: "30rem" }}
         >
-          {planets.map((planet, index) => (
-            <li className="list-group-item" key={index + 1}>
+          {planets.map((planet) => (
+            <li className="list-group-item" key={planet.name}>
               {planet.name}
               <Link
-                to={`/planets/${index + 1}`}
+                to={`/planets/${planet.url.split("/")[5]}`}
                 className="position-absolute end-0"
               >
                 <button className="btn btn-warning btn-sm">Details</button>
