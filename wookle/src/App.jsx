@@ -11,6 +11,7 @@ import Species from "./components/species/Species";
 import Starships from "./components/starships/Starships";
 import Vehicles from "./components/vehicles/Vehicles";
 import NavBar from "./components/navbar/NavBar";
+import ShowNavBar from "./components/navbar/ShowNavBar";
 import CharacterDetails from "./components/characters/CharacterDetails";
 import FilmDetails from "./components/films/FilmDetails";
 import PlanetDetails from "./components/planets/PlanetDetails";
@@ -19,7 +20,9 @@ import SpeciesDetails from "./components/species/SpeciesDetails";
 function App() {
   return (
     <>
-      <NavBar />
+      <ShowNavBar>
+        <NavBar />
+      </ShowNavBar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/people" element={<Characters />} />
