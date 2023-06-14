@@ -6,19 +6,35 @@ export default function VehiclesPagination({ setSearchParams }) {
   return (
     <nav aria-label="Vehicles Page Navigation">
       <ul className="pagination justify-content-center">
-        <button className="page-item page-link" disabled>
+        <button className="page-item page-link bg-warning text-dark" disabled>
           Page
         </button>
-        <button value="1" className="page-item page-link" onClick={handleClick}>
+        <button
+          value="1"
+          className="page-item page-link bg-warning text-dark"
+          onClick={handleClick}
+        >
           1
         </button>
-        <button value="2" className="page-item page-link" onClick={handleClick}>
+        <button
+          value="2"
+          className="page-item page-link bg-warning text-dark"
+          onClick={handleClick}
+        >
           2
         </button>
-        <button value="3" className="page-item page-link" onClick={handleClick}>
+        <button
+          value="3"
+          className="page-item page-link bg-warning text-dark"
+          onClick={handleClick}
+        >
           3
         </button>
-        <button value="4" className="page-item page-link" onClick={handleClick}>
+        <button
+          value="4"
+          className="page-item page-link bg-warning text-dark"
+          onClick={handleClick}
+        >
           4
         </button>
       </ul>
