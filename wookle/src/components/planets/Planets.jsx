@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import PlanetsPagination from "./PlanetsPagination";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function Planets() {
+  const [loading, setLoading] = useState(true);
   const [planets, setPlanets] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -10,6 +12,7 @@ export default function Planets() {
 
   useEffect(() => {
     async function displayPlanets() {
+      setLoading(true);
       const response = await fetch(
         page
           ? `https://swapi.dev/api/planets/?page=${page}`
@@ -17,9 +20,14 @@ export default function Planets() {
       );
       const jsonData = await response.json();
       setPlanets(jsonData.results);
+      setLoading(false);
     }
     displayPlanets();
   }, [searchParams]);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

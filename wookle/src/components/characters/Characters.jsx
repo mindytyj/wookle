@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import CharacterPagination from "./CharacterPagination";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function Characters() {
+  const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ export default function Characters() {
 
   useEffect(() => {
     async function displayCharacters() {
+      setLoading(true);
       const response = await fetch(
         page
           ? `https://swapi.dev/api/people/?page=${page}`
@@ -18,9 +21,14 @@ export default function Characters() {
       );
       const jsonData = await response.json();
       setCharacters(jsonData.results);
+      setLoading(false);
     }
     displayCharacters();
   }, [searchParams]);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

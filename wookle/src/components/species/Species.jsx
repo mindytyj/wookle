@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import SpeciesPagination from "./SpeciesPagination";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function Species() {
+  const [loading, setLoading] = useState(true);
   const [species, setSpecies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -10,6 +12,7 @@ export default function Species() {
 
   useEffect(() => {
     async function displaySpecies() {
+      setLoading(true);
       const response = await fetch(
         page
           ? `https://swapi.dev/api/species/?page=${page}`
@@ -17,9 +20,14 @@ export default function Species() {
       );
       const jsonData = await response.json();
       setSpecies(jsonData.results);
+      setLoading(false);
     }
     displaySpecies();
   }, [searchParams]);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

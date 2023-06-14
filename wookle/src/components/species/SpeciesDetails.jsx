@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function SpeciesDetails() {
+  const [loading, setLoading] = useState(true);
   const [species, setSpecies] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     async function displaySpeciesDetails() {
+      setLoading(true);
       const response = await fetch(`https://swapi.dev/api/species/${id}`);
       const jsonData = await response.json();
       setSpecies(jsonData);
+      setLoading(false);
     }
     displaySpeciesDetails();
   }, []);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

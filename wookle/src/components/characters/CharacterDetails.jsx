@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function CharacterDetails() {
+  const [loading, setLoading] = useState(true);
   const [character, setCharacter] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     async function displayCharacter() {
+      setLoading(true);
       const response = await fetch(`https://swapi.dev/api/people/${id}/`);
       const jsonData = await response.json();
       setCharacter(jsonData);
+      setLoading(false);
     }
     displayCharacter();
   }, []);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import StarshipsPagination from "./StarshipsPagination";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function Starships() {
+  const [loading, setLoading] = useState(true);
   const [starships, setStarships] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -10,6 +12,7 @@ export default function Starships() {
 
   useEffect(() => {
     async function displayStarships() {
+      setLoading(true);
       const response = await fetch(
         page
           ? `https://swapi.dev/api/starships/?page=${page}`
@@ -17,9 +20,14 @@ export default function Starships() {
       );
       const jsonData = await response.json();
       setStarships(jsonData.results);
+      setLoading(false);
     }
     displayStarships();
   }, [searchParams]);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

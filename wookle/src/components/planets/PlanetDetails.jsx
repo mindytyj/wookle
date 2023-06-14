@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function PlanetDetails() {
+  const [loading, setLoading] = useState(true);
   const [planet, setPlanet] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     async function displayPlanetDetails() {
+      setLoading(true);
       const response = await fetch(`https://swapi.dev/api/planets/${id}`);
       const jsonData = await response.json();
       setPlanet(jsonData);
+      setLoading(false);
     }
     displayPlanetDetails();
   }, []);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

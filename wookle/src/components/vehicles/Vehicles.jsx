@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import VehiclesPagination from "./VehiclesPagination";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function Vehicles() {
+  const [loading, setLoading] = useState(true);
   const [vehicles, setVehicles] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -10,6 +12,7 @@ export default function Vehicles() {
 
   useEffect(() => {
     async function displayVehicles() {
+      setLoading(true);
       const response = await fetch(
         page
           ? `https://swapi.dev/api/vehicles/?page=${page}`
@@ -17,9 +20,14 @@ export default function Vehicles() {
       );
       const jsonData = await response.json();
       setVehicles(jsonData.results);
+      setLoading(false);
     }
     displayVehicles();
   }, [searchParams]);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">

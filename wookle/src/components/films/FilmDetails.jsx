@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import LoadingScreen from "../loading/LoadingScreen";
 
 export default function FilmDetails() {
+  const [loading, setLoading] = useState(true);
   const [film, setFilm] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     async function displayFilmDetails() {
+      setLoading(true);
       const response = await fetch(`https://swapi.dev/api/films/${id}`);
       const jsonData = await response.json();
       setFilm(jsonData);
+      setLoading(false);
     }
     displayFilmDetails();
   }, []);
+
+  if (loading === true) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="container">
@@ -24,6 +32,7 @@ export default function FilmDetails() {
           style={{ width: "30rem" }}
         >
           <div className="card-body">
+            <img src={``} />
             <h2 className="card-title">Episode: {film.episode_id}</h2>
             <br />
             <p className="card-text">{film.opening_crawl}</p>
