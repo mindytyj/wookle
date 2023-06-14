@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingScreen from "../loading/LoadingScreen";
+import GetPoster from "./GetPoster";
 
 export default function Films() {
   const [loading, setLoading] = useState(true);
   const [films, setFilms] = useState([]);
-  const [posters, setPosters] = useState([]);
 
   useEffect(() => {
     async function displayFilms() {
@@ -16,19 +16,6 @@ export default function Films() {
       setLoading(false);
     }
     displayFilms();
-  }, []);
-
-  useEffect(() => {
-    async function getMoviePosters() {
-      setLoading(true);
-      const response = await fetch(
-        "https://api.airtable.com/v0/appYh5QcDHo7pggTQ/films?api_key=keymttnxc2E87Sin8"
-      );
-      const jsonData = await response.json();
-      setPosters(jsonData.records);
-      setLoading(false);
-    }
-    getMoviePosters();
   }, []);
 
   if (loading === true) {
@@ -43,11 +30,7 @@ export default function Films() {
         {films.map((film) => (
           <div className="col" key={film.title}>
             <div className="card h-100" style={{ maxWidth: "18rem" }}>
-              <img
-                src={`${posters.map((poster) => poster.fields.url)}`}
-                className="card-img-top"
-                alt={`${film.title}`}
-              />
+              <GetPoster film={film} />
               <div className="card-body">
                 <h5 className="card-title">{film.title}</h5>
                 <p className="card-text">Release Date: {film.release_date}</p>
