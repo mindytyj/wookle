@@ -17,6 +17,7 @@ import FilmDetails from "./components/films/FilmDetails";
 import PlanetDetails from "./components/planets/PlanetDetails";
 import SpeciesDetails from "./components/species/SpeciesDetails";
 import Favourites from "./components/favourites/Favourites";
+import EditFavourites from "./components/favourites/EditFavourites";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/starships" element={<Starships />} />
         <Route path="/vehicles" element={<Vehicles />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/favourites/:id/edit" element={<EditFavourites />} />
         <Route path="/*" element={<h1>Error 404: No page found</h1>} />
       </Routes>
     </>

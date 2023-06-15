@@ -4,7 +4,7 @@ export default function DeleteFavourite({
   setFavourites,
 }) {
   async function deleteFavourite(id) {
-    const response = fetch(
+    const response = await fetch(
       `https://api.airtable.com/v0/appQcnrN49tQLpv5Y/favourites/${id}/?api_key=keymttnxc2E87Sin8`,
       {
         method: "DELETE",
@@ -13,8 +13,9 @@ export default function DeleteFavourite({
         },
       }
     );
-    await response.json();
-    setFavourites(favourites.filter((favourite) => favourite.id !== id));
+    if (response.ok) {
+      setFavourites(favourites.filter((favourite) => favourite.id !== id));
+    }
   }
 
   return (
