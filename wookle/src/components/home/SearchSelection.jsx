@@ -19,6 +19,7 @@ export default function SearchSelection({ searchSelection }) {
       <option value="species">Species</option>
       <option value="starships">Starships</option>
       <option value="vehicles">Vehicles</option>
+      <option value="favourites">Favourites</option>
     </select>
   );
 }
