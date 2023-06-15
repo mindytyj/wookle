@@ -33,6 +33,7 @@ export default function GetPoster({ film }) {
       <img
         src={filmPoster.fields.url}
         className="card-img-top"
+        height={"450px"}
         alt={film.title}
       />
     </>

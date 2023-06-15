@@ -26,10 +26,10 @@ export default function Films() {
     <div className="container">
       <h1>Star Wars Films</h1>
       <br />
-      <div className="row row-cols-2 row-cols-md-4 g-2 justify-content-center">
+      <div className="row row-cols-1 row-cols-md-4 g-3 justify-content-center">
         {films.map((film) => (
           <div className="col" key={film.title}>
-            <div className="card h-100" style={{ maxWidth: "18rem" }}>
+            <div className="card" style={{ maxWidth: "21rem" }}>
               <GetPoster film={film} />
               <div className="card-body">
                 <h5 className="card-title">{film.title}</h5>
@@ -42,6 +42,7 @@ export default function Films() {
           </div>
         ))}
       </div>
+      <br />
     </div>
   );
 }
