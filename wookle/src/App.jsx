@@ -38,7 +38,7 @@ function App() {
         <Route path="/starships" element={<Starships />} />
         <Route path="/vehicles" element={<Vehicles />} />
         <Route path="/favourites" element={<Favourites />} />
-        <Route path="/favourites/:id/edit" element={<EditFavourites />} />
+        <Route path="/favourites/:id" element={<EditFavourites />} />
         <Route path="/*" element={<h1>Error 404: No page found</h1>} />
       </Routes>
     </>

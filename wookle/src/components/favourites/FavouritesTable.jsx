@@ -15,14 +15,23 @@ export default function FavouritesTable({ favourites, setFavourites }) {
           <tr key={favourite.id}>
             <td>{favourite.fields.name}</td>
             <td>
-              <Link to={`/favourites/${favourite.id}/edit`}>
-                <button className="btn btn-warning">Edit</button>
-              </Link>
-              <DeleteFavourite
-                favouriteId={favourite.id}
-                favourites={favourites}
-                setFavourites={setFavourites}
-              />
+              <div
+                className="btn-group"
+                role="group"
+                aria-label="Action Buttons"
+              >
+                <Link
+                  to={`/favourites/${favourite.id}`}
+                  className="btn-group nav-link"
+                >
+                  <button className="btn btn-warning">Edit</button>
+                </Link>
+                <DeleteFavourite
+                  favouriteId={favourite.id}
+                  favourites={favourites}
+                  setFavourites={setFavourites}
+                />
+              </div>
             </td>
           </tr>
         ))}
