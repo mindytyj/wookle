@@ -33,6 +33,11 @@ export default function NavBarItems() {
           Vehicles
         </button>
       </NavLink>
+      <NavLink to={"/favourites"} className="btn-group nav-link">
+        <button type="button" className="btn btn-dark">
+          Favourites
+        </button>
+      </NavLink>
     </div>
   );
 }
