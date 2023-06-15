@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import LoadingScreen from "../loading/LoadingScreen";
+import PosterLoading from "../loading/PosterLoading";
 
 export default function GetPoster({ film }) {
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ export default function GetPoster({ film }) {
   }, []);
 
   if (loading === true) {
-    return <LoadingScreen />;
+    return <PosterLoading />;
   }
 
   let filmId = film.url.split("/")[5];
