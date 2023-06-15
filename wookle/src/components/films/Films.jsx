@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingScreen from "../loading/LoadingScreen";
 import GetPoster from "./GetPoster";
+import dayjs from "dayjs";
 
 export default function Films() {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,10 @@ export default function Films() {
     return <LoadingScreen />;
   }
 
+  function formatDate(date) {
+    return dayjs(date).format("DD MMMM YYYY");
+  }
+
   return (
     <div className="container">
       <h1>Star Wars Films</h1>
@@ -33,7 +38,9 @@ export default function Films() {
               <GetPoster film={film} />
               <div className="card-body">
                 <h5 className="card-title">{film.title}</h5>
-                <p className="card-text">Release Date: {film.release_date}</p>
+                <p className="card-text">
+                  Release Date: {formatDate(film.release_date)}
+                </p>
                 <Link to={`/films/${film.url.split("/")[5]}`}>
                   <button className="btn btn-warning">Film Details</button>
                 </Link>

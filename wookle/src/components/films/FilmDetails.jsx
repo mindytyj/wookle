@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import LoadingScreen from "../loading/LoadingScreen";
+import dayjs from "dayjs";
 
 export default function FilmDetails() {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,10 @@ export default function FilmDetails() {
     return <LoadingScreen />;
   }
 
+  function formatDate(date) {
+    return dayjs(date).format("DD MMMM YYYY");
+  }
+
   return (
     <div className="container">
       <h1>{film.title}</h1>
@@ -37,7 +42,9 @@ export default function FilmDetails() {
             <br />
             <p className="card-text">{film.opening_crawl}</p>
             <br />
-            <p className="card-text">Release Date: {film.release_date}</p>
+            <p className="card-text">
+              Release Date: {formatDate(film.release_date)}
+            </p>
             <p className="card-text">Directed by {film.director}</p>
             <p className="card-text">Produced by {film.producer}</p>
             <br />
