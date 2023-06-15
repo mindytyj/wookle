@@ -6,37 +6,47 @@ export default function StarshipsPagination({ setSearchParams }) {
   return (
     <nav aria-label="Starships Page Navigation">
       <ul className="pagination justify-content-center">
-        <button className="page-item page-link bg-warning text-dark" disabled>
-          Page
-        </button>
-        <button
-          value="1"
-          className="page-item page-link bg-warning text-dark"
-          onClick={handleClick}
-        >
-          1
-        </button>
-        <button
-          value="2"
-          className="page-item page-link bg-warning text-dark"
-          onClick={handleClick}
-        >
-          2
-        </button>
-        <button
-          value="3"
-          className="page-item page-link bg-warning text-dark"
-          onClick={handleClick}
-        >
-          3
-        </button>
-        <button
-          value="4"
-          className="page-item page-link bg-warning text-dark"
-          onClick={handleClick}
-        >
-          4
-        </button>
+        <li className="page-item">
+          <button className="page-link bg-warning text-dark" disabled>
+            Page
+          </button>
+        </li>
+        <li className="page-item">
+          <button
+            value="1"
+            className="page-link bg-warning text-dark"
+            onClick={handleClick}
+          >
+            1
+          </button>
+        </li>
+        <li className="page-item">
+          <button
+            value="2"
+            className="page-link bg-warning text-dark"
+            onClick={handleClick}
+          >
+            2
+          </button>
+        </li>
+        <li className="page-item">
+          <button
+            value="3"
+            className="page-link bg-warning text-dark"
+            onClick={handleClick}
+          >
+            3
+          </button>
+        </li>
+        <li className="page-item">
+          <button
+            value="4"
+            className="page-link bg-warning text-dark"
+            onClick={handleClick}
+          >
+            4
+          </button>
+        </li>
       </ul>
     </nav>
   );
