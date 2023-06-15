@@ -8,6 +8,10 @@ export default function CreateFavourites({ addCharacter }) {
   }
 
   async function handleAddCharacter() {
+    if (inputRef.current.value === " ") {
+      return;
+    }
+
     const characterData = {
       fields: {
         name: inputRef.current.value,
@@ -26,6 +30,7 @@ export default function CreateFavourites({ addCharacter }) {
     );
     const jsonData = await response.json();
     addCharacter(jsonData);
+    inputRef.current.value = "";
   }
 
   return (
